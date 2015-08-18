@@ -1,11 +1,11 @@
-#include <QtGui/QApplication>
 #include "etacoser.h"
+#include <QApplication>
 
-
-int main(int argc, char** argv)
+int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-    EtaCoser etacoser;
-    etacoser.show();
-    return app.exec();
+    QApplication a(argc, argv);
+    EtaCoser w;
+    w.show();
+
+    return a.exec();
 }

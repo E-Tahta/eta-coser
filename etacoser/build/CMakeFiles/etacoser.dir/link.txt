@@ -1,1 +1,0 @@
-/usr/bin/c++   -g    CMakeFiles/etacoser.dir/etacoser.cpp.o CMakeFiles/etacoser.dir/main.cpp.o  -o etacoser -rdynamic -lQtCore -lQtGui 
