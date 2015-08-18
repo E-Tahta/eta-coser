@@ -10,8 +10,12 @@ class EtaCoser : public QMainWindow
 public:
     EtaCoser();
     virtual ~EtaCoser();
+private:
+    bool startwithpardusflag;
 private slots:
     void startWithWindows();
+    void startWithPardus();
+    void timerShotCallBack();
 };
 
 #endif // etacoser_H
