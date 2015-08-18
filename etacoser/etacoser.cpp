@@ -5,14 +5,14 @@
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QIcon>
 #include <QtGui/QPalette>
-#include <QTimer>
 #include <QSettings>
+
 EtaCoser::EtaCoser()
 {
     QSettings settings("/usr/share/eta-coser/config.ini",QSettings::IniFormat);
     settings.beginGroup("eta-coser");
-
-    if(settings.value("Start")=="Pardus")
+    operatingsystem = settings.value("Start").toString();
+    if(operatingsystem=="Pardus")
     {
         startwithpardusflag = true;
     }
@@ -21,7 +21,7 @@ EtaCoser::EtaCoser()
         startwithpardusflag = false;
     }
 
-    int time = settings.value("Time").toInt();
+    time = settings.value("Time").toInt();
     settings.endGroup();
 
     QDesktopWidget dw;
@@ -52,17 +52,28 @@ EtaCoser::EtaCoser()
     
     QWidget* centralWidget = new QWidget(this);
     centralWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    centralWidget->setGeometry(0,0,sw,sh-50);
     
     QHBoxLayout* layout = new QHBoxLayout(centralWidget);
     layout->addWidget(btnPardus);
     layout->addWidget(btnWindows);
 
-    setCentralWidget(centralWidget);
-    
+    statuslabel = new QLabel(this);
+    statuslabel->setGeometry(0,sh-50,sw,50);
+    statuslabel->setStyleSheet("QLabel{color: black; qproperty-alignment: AlignCenter;}");
+    QFont f;
+    f.setPointSize(35);
+    statuslabel->setFont(f);
+
+    countdown = new QTimer(this);
+    connect(countdown,SIGNAL(timeout()),this,SLOT(setTime()));
     connect(btnPardus,SIGNAL(clicked()),this,SLOT(startWithPardus()));
     connect(btnWindows,SIGNAL(clicked()),this,SLOT(startWithWindows()));
 
     QTimer::singleShot(time*1000,this,SLOT(timerShotCallBack()));
+
+    countdown->start(1000);
+    setStatusLabel(time--);
 }
 
 EtaCoser::~EtaCoser()
@@ -89,4 +100,22 @@ void EtaCoser::timerShotCallBack()
         startWithWindows();
     }
 
+}
+
+void EtaCoser::setTime()
+{
+    if(time == 0)
+    {
+        countdown->stop();
+    }
+    else
+    {
+        setStatusLabel(time--);
+    }
+}
+
+void EtaCoser::setStatusLabel(int seconds)
+{
+    QString output = operatingsystem+ QString::fromUtf8(" Açılıyor ")+ QString::number(seconds);
+    statuslabel->setText( output);
 }
