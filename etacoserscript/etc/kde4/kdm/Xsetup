@@ -2,7 +2,7 @@
 # Xsetup - run as root before the login dialog appears
 
 
-if ! [ -e /var/run/etacoser.pid ]; then
+if  [ ! -f /var/run/etacoser.pid ]; then
 	touch /var/run/etacoser.pid
 	etacoser
 else
