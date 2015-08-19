@@ -2,11 +2,11 @@
 # Xsetup - run as root before the login dialog appears
 
 
-if ! [ -e /var/run/etacoser.pid ]; then
+if  [ ! -f /var/run/etacoser.pid ]; then
 	touch /var/run/etacoser.pid
 	etacoser
 else
-	echo "eta-cos found"
+	echo "eta-coser found"
 fi
 
 #xconsole -geometry 480x130-0-0 -notify -verbose -fn fixed -exitOnFail -file /dev/xconsole &
