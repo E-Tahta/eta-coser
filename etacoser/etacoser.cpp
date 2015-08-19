@@ -38,18 +38,14 @@ EtaCoser::EtaCoser()
     btnWindows->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     
     btnWindows->setIcon(QIcon("/usr/share/eta-coser/windows-logo.png"));
-    btnWindows->setIconSize(QSize(400,438));
+    btnWindows->setIconSize(QSize(328,337));
     btnPardus->setIcon(QIcon("/usr/share/eta-coser/pardus-logo.png"));
-    btnPardus->setIconSize(QSize(399,629));
+    btnPardus->setIconSize(QSize(304,373));
 
+    btnPardus->setStyleSheet( "background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #ffcc00, stop:1 #ff9c00);");
+    
+    btnWindows->setStyleSheet( "background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #56c4ff, stop:1 #006ac0);");
 
-    
-    QPalette* background = new QPalette();
-    background->setColor(QPalette::Button,"#ff6c00");
-    btnPardus->setPalette(*background);	
-    background->setColor(QPalette::Button,"#4AAEE8");
-    btnWindows->setPalette(*background);
-    
     QWidget* centralWidget = new QWidget(this);
     centralWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     centralWidget->setGeometry(0,0,sw,sh-50);
@@ -62,7 +58,7 @@ EtaCoser::EtaCoser()
     statuslabel->setGeometry(0,sh-50,sw,50);
     statuslabel->setStyleSheet("QLabel{color: black; qproperty-alignment: AlignCenter;}");
     QFont f;
-    f.setPointSize(35);
+    f.setPointSize(30);
     statuslabel->setFont(f);
 
     countdown = new QTimer(this);
