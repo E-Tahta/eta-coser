@@ -16,8 +16,13 @@ To install the application to the system run the fallowing code in source code d
 ```bash
 sudo cp -Rvf etacoser /usr/bin/.
 ```
-and then go to etacoserscripts directory and change mode of setup.sh
-and execute.
+and then go to etacoserscripts directory and run the fallowing code:
+
+```bash
+cd etacoserscripts
+chmod +x setup.sh
+./setup.sh
+```
 
 ### Configuration
 
