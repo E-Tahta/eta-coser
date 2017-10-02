@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+if [ -f /usr/share/eta/eta-coser/Xsetup.modified ] && [ -f /etc/kde4/kdm/Xsetup ]; then
+    cp -fr /etc/kde4/kdm/Xsetup /etc/kde4/kdm/Xsetup.original
+    cp -fr /usr/share/eta/eta-coser/Xsetup.modified /etc/kde4/kdm/Xsetup
+    chmod 755 /etc/kde4/kdm/Xsetup
+fi

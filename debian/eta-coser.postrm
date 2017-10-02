@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+if [ -f /etc/kde4/kdm/Xsetup.original ]; then
+    mv /etc/kde4/kdm/Xsetup.original /etc/kde4/kdm/Xsetup
+    chmod 755 /etc/kde4/kdm/Xsetup
+fi
