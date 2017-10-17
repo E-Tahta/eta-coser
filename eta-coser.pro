@@ -14,8 +14,11 @@ HEADERS  += \
 
 target.path = /usr/bin/
 
-config_files.files = config.ini Xsetup.modified
+config_files.files = config.ini 30_eta-coser.conf
 config_files.commands = mkdir -p /usr/share/eta/eta-coser
 config_files.path = /usr/share/eta/eta-coser/
 
-INSTALLS += target config_files
+wrapper_file.files = eta-coser-wrapper.sh
+wrapper_file.path = /usr/bin/
+
+INSTALLS += target config_files wrapper_file

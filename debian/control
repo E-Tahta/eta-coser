@@ -8,7 +8,7 @@ Homepage: http://pardus.org.tr
 
 Package: eta-coser
 Architecture: amd64
-Pre-Depends: kdm
+Pre-Depends: lightdm
 Depends: ${shlibs:Depends}, ${misc:Depends}, libqt5svg5
-Description: ETAP Ekran Karartma Programı
- Çeşitli yönlendirme oklarıyla ekranın belirli bölümleri karartılabilir.
+Description: ETAP OS Seçme Programı
+ Sadece ETAP ve Windows aynı anda yüklü ise çalışır.
