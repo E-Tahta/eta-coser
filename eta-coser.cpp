@@ -35,12 +35,9 @@ EtaCoser::EtaCoser()
                        QSettings::IniFormat);
     settings.beginGroup("eta-coser");
     operatingsystem = settings.value("Start").toString();
-    if(operatingsystem=="Pardus")
-    {
+    if(operatingsystem=="Pardus") {
         startwithpardusflag = true;
-    }
-    else
-    {
+    } else {
         startwithpardusflag = false;
     }
 
@@ -50,16 +47,16 @@ EtaCoser::EtaCoser()
     QDesktopWidget dw;
     int sw = dw.screenGeometry(dw.primaryScreen()).width();
     int sh = dw.screenGeometry(dw.primaryScreen()).height();
-    
+
     setWindowFlags(Qt::X11BypassWindowManagerHint);
     resize(sw,sh);
-    
+
     QPushButton* btnPardus = new QPushButton(this);
     QPushButton* btnWindows = new QPushButton(this);
-    
+
     btnPardus->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     btnWindows->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    
+
     btnWindows->setIcon(QIcon(":images/windows-logo.png"));
     btnWindows->setIconSize(QSize(328,337));
     btnPardus->setIcon(QIcon(":images/pardus-logo.png"));
@@ -67,14 +64,14 @@ EtaCoser::EtaCoser()
 
     btnPardus->setStyleSheet( "background-color: qlineargradient(x1:0, y1:0, \
                               x2:0, y2:1,stop:0 #ffcc00, stop:1 #ff9c00);");
-    
+
     btnWindows->setStyleSheet( "background-color: qlineargradient(x1:0, y1:0, \
                                x2:0, y2:1,stop:0 #56c4ff, stop:1 #006ac0);");
 
     QWidget* centralWidget = new QWidget(this);
     centralWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     centralWidget->setGeometry(0,0,sw,sh-50);
-    
+
     QHBoxLayout* layout = new QHBoxLayout(centralWidget);
     layout->addWidget(btnPardus);
     layout->addWidget(btnWindows);
@@ -108,31 +105,23 @@ void EtaCoser::startWithWindows()
 
 void EtaCoser::startWithPardus()
 {
-    system("systemctl restart kdm.service");
     this->close();
 }
 
 void EtaCoser::timerShotCallBack()
 {
-    if(startwithpardusflag)
-    {
+    if(startwithpardusflag) {
         startWithPardus();
-    }
-    else
-    {
+    } else {
         startWithWindows();
     }
-
 }
 
 void EtaCoser::setTime()
 {
-    if(time == 0)
-    {
+    if(time == 0) {
         countdown->stop();
-    }
-    else
-    {
+    } else {
         setStatusLabel(time--);
     }
 }
