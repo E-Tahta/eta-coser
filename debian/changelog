@@ -1,3 +1,10 @@
+eta-coser (0.2.3) stable; urgency=medium
+
+  * Update control file
+  * Pardus CI integration
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Thu, 13 Sep 2018 14:04:36 +0300
+
 eta-coser (0.2.2) unstable; urgency=medium
 
   * Clear up white spaces and remove any kdm related system cb
